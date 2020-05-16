@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Listado</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.min.css' %}">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	    <a class="btn btn-info" href="{% url 'polls:getForm' %}">Registrar</a> &nbsp;&nbsp;&nbsp;&nbsp;
+	    <a class="btn btn-info" href="{% url 'polls:getFormModelForm' %}">Registrar con ModelForm</a>
+	</nav>
+	<br><br>
+
+	<div class="container">
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Nombre</th>
+		      <th scope="col">Apellido</th>
+		      <th scope="col">DNI</th>
+		      <th scope="col">Accion</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for persona in personas %}
+		        <tr>
+			      <th scope="row">{{ persona.id }} </th>
+			      <td>{{ persona.nombre }}</td>
+			      <td>{{ persona.apellido }}</td>
+			      <td>{{ persona.dni }}</td>
+			      <td>
+			      	<a class="btn btn-info" href="{% url 'polls:detail' persona.id %}">Ver</button>
+			      </td>
+			    </tr>
+		    {% endfor %}
+		    
+		  </tbody>
+		</table>
+	</div>
+
+	<script src="{% static 'polls/js/jquery.js' %}" type="text/javascript"></script>
+	<script src="{% static 'polls/js/bootstrap.min.js' %}" type="text/javascript"></script>
+
+	<script>
+		
+		
+	</script>
+</body>
+</html>
